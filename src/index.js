@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+//Bootstrap
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+//pada saat menggunkan recoil wajib mendefinisikan <RecoilRoot>, <Suspense>
+ReactDOM.render(<
+  React.StrictMode >
+  <RecoilRoot>
+    <Suspense fallback={<div>Loading</div>}>
+      <BrowserRouter>
+           <App />
+      </BrowserRouter>
+    </Suspense>
+  </RecoilRoot>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

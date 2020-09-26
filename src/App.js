@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { useRecoilState } from 'recoil'
+import Router from './router'
+import { theme } from './store'
+// import Navbar from './Components/Navbar'
 
 function App() {
+  //3.atom -> change theme
+  const [currentTheme, setCurrentTheme] = useRecoilState(theme)
+  //4.atom -> change theme
+  const defaultTheme = currentTheme == 'dark' ? 'bg-dark text-white' : 'bg-white text-dark'
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`${defaultTheme} vh-100`}>
+      {/* <Navbar /> */}
+      <Router />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
+
+
+
+
+
+
+
+
+
+
